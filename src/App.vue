@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <my-header></my-header>
+    <my-header :seller="seller"></my-header>
     <div class="tab border-1px">
       <div class="tab-item">
         <router-link :to="{path:'/goods'}">商品</router-link>
@@ -27,11 +27,11 @@ export default {
   },
   created(){
     this.$http.get('/api/seller')
-      .then(function (response) {
-        console.log(response);
+      .then( (response)=>{
+          this.seller=response.data.data;
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch( (error)=> {
+
       });
   },
   components:{
